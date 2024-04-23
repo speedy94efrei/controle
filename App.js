@@ -1,20 +1,34 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+// App.js
+import React from 'react';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
+import { StyleSheet } from 'react-native';
 
-export default function App() {
+const Tab = createBottomTabNavigator();
+
+import Home from './screens/HomeScreen';
+import Personnages from './screens/PersonnagesScreen';
+import Propos from './screens/AProposScreen';
+import Page2 from './screens/Page2Screen';
+
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen name="Home" component={Home} />
+        <Tab.Screen name="Personnage" component={Personnages} />
+        <Tab.Screen name="A propos" component={Propos} />
+        <Tab.Screen name="classement" component={Page2} />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
-}
+};
 
 const styles = StyleSheet.create({
-  container: {
+  screenContainer: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#f0f0f0', // Gris clair
   },
 });
+
+export default App;
